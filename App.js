@@ -1,20 +1,19 @@
+// App.js
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import AppNavigator from './navigation/AppNavigator';
+import { ThemeProvider } from './context/ThemeContext';
+import { CartProvider } from './context/CartContext';
+import { ReservationProvider } from './context/ReservationContext';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ThemeProvider>
+      <CartProvider>
+        <ReservationProvider>
+          <StatusBar style="auto" />
+          <AppNavigator />
+        </ReservationProvider>
+      </CartProvider>
+    </ThemeProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
